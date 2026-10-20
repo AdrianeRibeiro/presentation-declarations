@@ -1,0 +1,13 @@
+.git
+.gitignore
+log/*
+tmp/*
+!log/.keep
+!tmp/.keep
+*.md
+.rspec
+spec
+.github
+.dockerignore
+Dockerfile
+docker-compose.yml

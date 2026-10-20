@@ -1,0 +1,16 @@
+#!/bin/bash
+set -euo pipefail
+
+host="${POSTGRES_HOST:-localhost}"
+port="${POSTGRES_PORT:-5432}"
+user="${POSTGRES_USER:-postgres}"
+
+until pg_isready -h "$host" -p "$port" -U "$user"; do
+  echo "waiting for postgres at ${host}:${port}"
+  sleep 1
+done
+
+bundle exec rails db:prepare
+RAILS_ENV=test bundle exec rails db:prepare
+
+exec "$@"

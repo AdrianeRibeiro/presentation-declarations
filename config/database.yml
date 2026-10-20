@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: <%= ENV.fetch("POSTGRES_USER", "postgres") %>
+  password: <%= ENV.fetch("POSTGRES_PASSWORD", "postgres") %>
+  host: <%= ENV.fetch("POSTGRES_HOST", "localhost") %>
+  port: <%= ENV.fetch("POSTGRES_PORT", 5434) %>
+
+development:
+  <<: *default
+  database: objects_presentation_api_alt2_development
+
+test:
+  <<: *default
+  database: objects_presentation_api_alt2_test
+
+production:
+  <<: *default
+  database: objects_presentation_api_alt2_production
+  username: objects_presentation_api_alt2
+  password: <%= ENV["OBJECTS_PRESENTATION_API_ALT2_DATABASE_PASSWORD"] %>

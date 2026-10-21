@@ -15,7 +15,6 @@
 Portas distintas da POC-1: app `3002`, Postgres `5434`.
 
 ```bash
-cd ~/Documentos/objects-presentation-api-alt2
 docker compose up --build
 ```
 
